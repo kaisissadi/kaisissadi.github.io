@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="stone.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <title>kaïs issadi</title>
+  <style>
+
+    /* ========================================= GENERAL ========================================= */
+    :root {
+      --bg-color: rgb(242, 242, 238);
+      --header-bg: rgb(242, 242, 238);
+      --text-color: #2a2a2a;
+      --text-description: #2a2a2a;
+      --text-muted: #343434;
+      --accent-gray: #6a6a6a;
+      --border-color: #343434;
+      --line-color: #515151;
+      --font-main: 'Menlo', Courier, monospace;
+      --font-bold: 'Menlo Bold', Courier, monospace;
+      --header-height: 8em;
+      --title-size: 24pt;
+      --subtitle-size: 14pt;
+      --text-size: 10pt;
+      --margin: 6em;
+      --spacing: 2em;
+      --spacing-img: 7em;
+    }
+    a:link {
+      color: var(--text-description);
+      background-color: transparent;
+      text-decoration: underline;
+    }
+    a:visited {
+      color: var(--text-description);
+      background-color: transparent;
+      text-decoration: none;
+    }
+    a:hover {
+      color: var(--text-muted);
+      background-color: transparent;
+      text-decoration: underline;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      width: 100%;
+      height: 100dvh;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-main);
+      font-size: var(--text-size);
+      line-height: 1.4;
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
+    }
+
+
+
+    .loading { animation: caillou 4s linear 1;
+      position: fixed; z-index: 2000;
+      left: 0; top: 0; width: 100%; height: 100%;
+      background-color: rgba(251, 249, 238, 1); 
+      opacity: 0; transition: opacity 0.3s ease;
+      overflow: visible;
+      display: flex; justify-content: center ; align-items: center;
+      pointer-events: none;
+    }
+@keyframes caillou {
+0% { opacity: 1 }
+80% { opacity: 1 }
+99% { opacity: 0; display: visible; width: 100%; height: 100%;}
+
+100% { display: hidden; width: 0; height: 0;}
+}
+
+    .logo-loading {
+       
+      width: auto; height: 400px;
+      margin-bottom: -10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: var(--text-size); color: var(--text-muted);
+      
+    }
+
+
+    .loading-column .logo-placeholder {
+      width: auto; height: 300px; max-height: none;
+      display: block; justify-content: center;
+    }
+
+    .site-header {
+      border-top: 2px dotted black;
+      border-bottom: 2px dotted black;
+      position: fixed; top: 10px; left: 0; width: 100%;
+      height: var(--header-height);
+      background-color: var(--header-bg);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 var(--margin); z-index: 100;
+    }
+    .header-left { display: flex; align-items: center; gap: var(--spacing); }
+    .logo-placeholder {
+      width: auto; height: 90px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: var(--text-size); color: var(--text-muted);
+    }
+
+
+
+
+
+    .loading-column { display: flex; flex-direction: column; gap: 0.5em; justify-content: center; align-items: center; }
+
+    .portfolio-title { padding: 2px 5px; background-color: var(--text-description); font-size: var(--subtitle-size); font-family: var(--font); color: var(--bg-color); font-weight: 400; letter-spacing: 1px; display: inline-block; text-align: center; }
+
+    .portfolio-title-loading { padding: 2px 5px; background-color: var(--text-description); font-size: var(--subtitle-size); font-family: var(--font); color: var(--bg-color); font-weight: 400; letter-spacing: 1px; display: inline-block; text-align: center; }
+
+    .header-right { display: flex; gap: var(--spacing); }
+
+
+
+    .layout-container {
+      display: grid; grid-template-columns: 1.5fr 0.5fr 3fr ;
+      height: 100dvh; width: 100%;
+      padding-top: 10em;
+    }
+    .column {
+      overflow-y: auto;
+      scrollbar-width: thin; scrollbar-color: #333 transparent;
+    }
+    .column::-webkit-scrollbar { width: 6px; }
+    .column::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+
+
+
+        /* =========================================  RIGHT COLUMN  ========================================= */
+    .col-right { padding: var(--spacing); padding-left: var(--margin); padding-top: 5em; overflow: scroll;}
+
+    .info-section { margin-bottom: var(--spacing); }
+
+    .info-link {
+      color: var(--text-color); text-decoration: none;
+      font-size: var(--subtitle-size); letter-spacing: 1px;
+      transition: opacity 0.3s;
+    }
+    
+    .info-link:hover {  text-decoration: underline; cursor: pointer;  }
+
+
+
+
+        /* =========================================  MIDDLE COLUMN  ========================================= */
+
+        .col-middle { grid-template-rows: 1fr 1fr 1fr; padding: 0; padding-top: 3em; }
+
+        .category-list {
+          list-style: none; padding: 0;
+          display: flex; flex-direction: column; height: 24vh; 
+        }
+
+    .category-block {
+      display: grid; grid-template-columns: 1fr; 
+      gap: var(--spacing); align-content: right; height: 24vh;
+    }
+
+    .category-column { display: flex; flex-direction: column; gap: 0.5em; justify-content: center;  justify-self: start; max-height: 25vh;  }
+
+    .info-header { margin-bottom: 0px; }
+
+    .info-category { font-size: var(--subtitle-size); font-family: var(--font-main); font-weight: 400;  }
+    .info-header-mobile {  padding-right: var(--spacing); padding-left: var(--margin); visibility: hidden; margin-bottom: 0px; }
+
+    .info-category-mobile { visibility: hidden; font-size: var(--subtitle-size); font-family: var(--font-main); font-weight: 400;  }
+
+    /* ========================================= LEFT COLUMN ========================================= */
+    .col-left { grid-template-rows: 1fr 1fr 1fr; padding-bottom: var(--spacing) }
+    
+    .project-list {
+      list-style: none; padding: 0;
+      display: flex; flex-direction: column; gap: var(--spacing); padding: var(--spacing); padding-right: var(--margin);
+    }
+    
+    .project-block {
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; 
+      gap: var(--spacing); align-content: right; max-height: 15vh;
+    }
+    
+    .image-column { display: flex; flex-direction: column; gap: 0.5em; justify-content: center;  justify-self: end; aspect-ratio: 210 / 297; max-height: 23vh;  }
+
+    .project-header { margin-bottom: 0px; }
+
+    .project-title { font-size: var(--text-size); font-family: var(--font-main); font-weight: 400; text-align: center; }
+ 
+
+    /* FIXED: Main image now scales to container width, never overflows */
+    .project-main-image {
+       
+      width: 100%;
+      background-color: var(--accent-gray);
+      border: 2px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: left;
+      justify-content: center;
+      cursor: pointer;
+      scale: 1;
+      transition: scale 0.1s ease-in-out;
+      aspect-ratio: 210 / 297;
+      
+    }
+
+    .project-main-image:hover {
+      scale: 1.015;
+      transition: scale 0.1s ease-in-out;
+    }
+
+    .project-main-image img {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      display: block;
+      aspect-ratio: 210 / 297;
+
+    }
+
+
+
+
+
+
+
+    /* ========================================= SCALING ========================================= */
+ 
+
+    @media (max-width: 1500px) {
+    
+    :root {
+      --margin: 2em;
+      --spacing: 1em;
+    }
+      
+
+    
+    .category-block {
+      display: grid; grid-template-columns: 1fr; 
+      gap: var(--spacing); align-content: center; max-height: 20vh;
+    }
+    .category-list {
+      list-style: none; padding: 0;
+      display: flex; flex-direction: column; gap: var(--spacing); padding: var(--spacing);  
+    }
+    .category-column { display: flex; flex-direction: column; gap: 0.5em; justify-content: center;  justify-self: start; max-height: 25vh;  }
+
+
+
+    .image-column { gap: 0.1em;  align-items: left; aspect-ratio: 210 / 297; height: auto; justify-self: center; }
+
+    .layout-container {
+      grid-template-columns: 1fr;
+      height: auto;
+      overflow: visible;
+      min-height: 100dvh;
+     }
+
+     .project-block {
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr ; 
+
+      gap: var(--spacing); max-height: 80vh;
+     margin-left: var(--margin);
+     margin-bottom: var(--spacing);
+    }
+
+    .text-column {
+       display: contents;
+    }
+
+
+    .col-middle { visibility: hidden; height: 0; padding: 0; margin: 0; }
+
+    .info-header-mobile { visibility: visible; }
+
+    .info-category-mobile { visibility: visible; }
+
+    .project-list {
+       padding-left: 0;
+     }
+
+     .col-right { padding: var(--margin);}
+   }
+
+    @media (max-width: 1200px) {
+
+    .project-block {
+      grid-template-columns: 1fr 1fr 1fr;          
+      gap: var(--spacing); align-content: space-evenly; max-height: 80vh;
+      margin-left: var(--margin);
+      margin-bottom: var(--spacing);}
+    
+    }
+
+
+    @media (max-width: 800px) {
+        :root {
+            --margin: 4em;
+        }
+        .project-block {
+        display: grid; grid-template-columns: 1fr 1fr ; 
+
+        gap: 20px;
+        margin-left: var(--margin);
+        margin-bottom: var(--spacing);
+      }
+
+
+        .col-left { grid-template-rows: 1fr 1fr 1fr 1fr 1fr; padding-bottom: var(--spacing) }
+    .project-list {
+      list-style: none; padding: 0;
+      display: flex; flex-direction: column; gap: var(--spacing); padding: var(--spacing); padding-right: var(--margin);
+    }
+    
+    .project-block {
+      display: grid; grid-template-columns: 1fr 1fr; 
+gap: var(--spacing); align-content: space-evenly; max-height: 80vh;
+    }
+         
+
+    }
+  </style>
+</head>
+
+
+
+
+
+
+
+
+
+    <!-- ========================================= BODY ========================================= -->
+
+<body>
+  <div class="loading" src="https://i.imgur.com/jWaYx80.png">
+    <div class="loading-column">
+      <div class="logo-loading">
+        <img class="logo-loading" src="stone.png" alt="logo">
+      </div>
+      <div class="project-header">
+        <div class="portfolio-title-loading">kaïs issadi</div>
+      </div>
+     </div>
+  </div>
+
+    <!-- ========================================= HEADER ========================================= -->
+  <header class="site-header">
+    <div class="header-left">
+      <img class="logo-placeholder" src="stone.png" alt="logo">
+    </div>
+    <div class="header-right">
+      <div class="portfolio-title">kaïs issadi</div>
+    </div>
+  </header>
+
+  <div class="layout-container">
+
+    <!-- ========================================= RIGHT COL ========================================= -->
+
+    <aside class="column col-right">
+      <div class="info-section">
+      <div onclick="window.open('about.html', '_self')" class="info-link" target="_self">About</div>
+      </div>
+      <div class="info-section">
+      <div onclick="window.open('contact.html', '_self')" class="info-link" target="_self">Contact</div>
+      </div>
+    </aside>
+
+    <!-- ========================================= MIDDLE COL ========================================= -->
+
+    <aside class="column col-middle">
+      <ul class="category-list">
+        <li class="category-block">
+          <div class="category-column">
+            <div class="info-header">
+              <div class="info-category"> > video </div>
+            </div>
+          </div>
+
+          </li>
+      </ul>
+
+      <ul class="category-list">
+        <li class="category-block">
+          <div class="category-column">
+            <div class="info-header">
+              <div class="info-category"> > digital </div>
+            </div>
+          </div>
+
+          </li>
+      </ul>
+
+      <ul class="category-list">
+        <li class="category-block">
+          <div class="category-column">
+            <div class="info-header">
+              <div class="info-category">> installation </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- ========================================= LEFT COL ========================================= -->
+
+
+    <aside class="column col-left">
+
+      <div class="info-header-mobile">
+        <div class="info-category-mobile">> video </div>
+      </div>
+
+      <ul class="project-list">
+        <li class="project-block">
+
+          <div class="image-column">
+            <div class="project-main-image">
+              <img src="scan.jpeg" onclick="window.open('project.html', '_self')" alt="Installation">
+            </div>
+            <div class="project-header">
+              <div class="project-title">fossil data </div>
+            </div>
+          </div>
+
+
+          <div class="image-column">
+            <div class="project-main-image">
+              <img src="scan.jpeg" onclick="window.open('project.html', '_self')" alt="Installation">
+            </div>
+            <div class="project-header">
+              <div class="project-title">grief algorithm</div>
+            </div>
+          </div>
+
+
+          <div class="image-column">
+            <div class="project-main-image">
+              <img src="scan.jpeg" onclick="window.open('project.html', '_self')" alt="Installation">
+            </div>
+            <div class="project-header">
+              <div class="project-title">out of service</div>
+            </div>
+          </div>
+
+
+          <div class="image-column">
+            <div class="project-main-image">
+              <img src="scan.jpeg" onclick="window.open('project.html', '_self')" alt="Installation">
+            </div>
+            <div class="project-header">
+              <div class="project-title">fuck housework</div>
+            </div>
+          </div>
+
+
+        </li>        
+      </ul>
+
+      <div class="info-header-mobile">
+        <div class="info-category-mobile">> digital </div>
+     </div>
+
+      <ul class="project-list">
+        <li class="project-block">
+
+
+          <div class="image-column">
+            <div class="project-main-image">
+              <img src="scan.jpeg" onclick="window.open('project.html', '_self')" alt="Installation">
+            </div>
+            <div class="project-header">
+              <div class="project-title">utopia</div>
+            </div>
+          </div>
+
+
+          <div class="image-column">
+            <div class="project-main-image">
+              <img src="scan.jpeg" onclick="window.open('project.html', '_self')" alt="Installation">
+            </div>
+            <div class="project-header">
+              <div class="project-title">siblings</div>
+            </div>
+          </div>
+
+
+          <div class="image-column">
+            <div class="project-main-image">
+              <img src="scan.jpeg" onclick="window.open('project.html', '_self')" alt="Installation">
+            </div>
+            <div class="project-header">
+              <div class="project-title">be karen</div>
+            </div>
+          </div>
+
+
+          <div class="image-column">
+            <div class="project-main-image">
+              <img src="scan.jpeg" onclick="window.open('project.html', '_self')" alt="Installation">
+            </div>
+            <div class="project-header">
+              <div class="project-title">hut</div>
+            </div>
+          </div>
+
+
+        </li>        
+      </ul>
+
+      <div class="info-header-mobile">
+        <div class="info-category-mobile">> installation </div>
+      </div>
+  
+      <ul class="project-list">
+        <li class="project-block">
+
+
+          <div class="image-column">
+            <div class="project-main-image">
+              <img src="scan.jpeg" onclick="window.open('project.html', '_self')" alt="Installation">
+            </div>
+            <div class="project-header">
+              <div class="project-title">ken boy</div>
+            </div>
+          </div>
+
+
+          <div class="image-column">
+            <div class="project-main-image">
+              <img src="scan.jpeg" onclick="window.open('project.html', '_self')" alt="Installation">
+            </div>
+            <div class="project-header">
+              <div class="project-title">wool</div>
+            </div>
+          </div>
+
+
+          <div class="image-column">
+            <div class="project-main-image">
+              <img src="scan.jpeg" onclick="window.open('project.html', '_self')" alt="Installation">
+            </div>
+            <div class="project-header">
+              <div class="project-title">damn !</div>
+            </div>
+          </div>
+
+
+          <div class="image-column">
+            <div class="project-main-image">
+              <img src="scan.jpeg" onclick="window.open('project.html', '_self')" alt="Installation">
+            </div>
+            <div class="project-header">
+              <div class="project-title">white cube</div>
+            </div>
+          </div>
+
+
+        </li>
+      </ul>
+    </aside>
+    
+  </div>
+
+</body>
+</html>
