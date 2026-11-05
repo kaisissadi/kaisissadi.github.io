@@ -342,7 +342,7 @@
 
   <header class="site-header">
     <div class="header-left">
-      <div onclick="window.open('home.html', '_self')" class="social-link" target="_self">< home</div>
+      <div onclick="window.open('https://kaisissadi.github.io/home.html', '_self')" class="social-link" target="_self">< home</div>
     </div>
   </header>
 
@@ -353,9 +353,22 @@
       <div class="info-section">
         <div style="font-size: var(--title-size); font-family: var(--font); font-weight: 400; margin-bottom: 40px; margin-top: -6px; color: var(--text-muted);">Damn, I ripped my T-shirt.</div>
         <p style="font-size: var(--text-size); line-height: 1.5; text-align: justify; text-align-last: left; ">
+Stains, holes, fabric that’s worn thin.
+<br><br>
+Although they’re often seen as detracting from a garment’s value,
+they actually tell our story. We’re always afraid of wearing out our
+clothes and no longer being able to wear them. Ironically, by worrying
+about this, we never even get round to wearing them in the first place.
+<br><br>
+Our clothes should reflect our lives, who we are and what we do.
+<br><br>
+From that grass stain the time I played in the park with my dog, to the plaster
+on my trousers when I was making a mug for Mother’s Day, to the glue on my T-shirt
+the day I clumsily tried to repair my lamp. Their wear and tear tells a story.
+<br><br>
+Our clothes aren’t beautiful in spite of that stain;
+it’s that stain that gives them even more value.
 
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at elit laoreet risus auctor eleifend. Vestibulum varius, libero nec mollis pretium, justo augue accumsan lorem, sit amet pulvinar eros erat at leo. Donec bibendum fringilla ligula, non blandit felis cursus eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In hac habitasse platea dictumst. Pellentesque sit amet diam ut urna aliquet dignissim. Mauris nec gravida mi. Phasellus et nulla non nulla vestibulum suscipit. Sed dolor lectus, condimentum ut neque a, auctor auctor nisl. Sed auctor lacinia nunc a sodales. Cras vitae urna sagittis quam blandit lobortis. Suspendisse blandit ante nec ante bibendum interdum. Mauris ac turpis purus. Nullam varius, nulla in maximus finibus, eros massa aliquet magna, id semper enim purus id ligula. Morbi a odio non lacus posuere tincidunt vitae vel est.
-       
         </p>
       </div>
     </aside>
@@ -368,18 +381,13 @@
         <li class="project-block">
           <div class="image-column">
             <div class="project-main-image">
-              <img src="scan.jpeg" alt="Installation">
+              <img src="1.jpg" alt="Installation">
             </div>
             <div class="project-thumbnails">
 
-              <div class="thumb-box"><img src="scan.jpeg" alt="Thumb"></div>
-              <div class="thumb-box"><img src="scan.jpeg" alt="Thumb"></div>
-              <div class="thumb-box video-thumb" data-vimeo-url="https://player.vimeo.com/video/1202499847">
-                <img src="scan.jpeg" alt="Video 1">
-              </div>
-              <div class="thumb-box video-thumb" data-vimeo-url="https://player.vimeo.com/video/1202499880">
-                <img src="scan.jpeg" alt="Video 2">
-              </div>
+              <div class="thumb-box"><img src="2.jpg" alt="Thumb"></div>
+              <div class="thumb-box"><img src="3.jpg" alt="Thumb"></div>
+
             </div>
           </div>
         </li>
